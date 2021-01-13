@@ -49,16 +49,13 @@ class PurchaseService(
 
     }
 
-    @Transactional
     fun updateArticleInventory(productArticleDetails: List<ProductArticleDetail>, productQuantity: Int) {
         productArticleDetails.forEach {
             try {
-                val articleId = it.articleId
-                val articleInventory = articleInventoryFacade.findByArticleId(articleId)
+                val articleInventory = articleInventoryFacade.findByArticleId(it.articleId)
                 val currentStock = articleInventory.stock
-                val requiredArticleQuantity = it.quantityRequired
 
-                val newStockAmount = currentStock - (productQuantity * requiredArticleQuantity)
+                val newStockAmount = currentStock - (productQuantity * it.quantityRequired)
 
                 articleInventoryFacade.save(
                         ArticleInventory(

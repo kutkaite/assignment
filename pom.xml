@@ -9,9 +9,9 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.ikea</groupId>
-	<artifactId>technical.assignment</artifactId>
+	<artifactId>technical-assignment</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>technical.assignment</name>
+	<name>technical-assignment</name>
 	<description>IKEA Technical assignment</description>
 
 	<properties>

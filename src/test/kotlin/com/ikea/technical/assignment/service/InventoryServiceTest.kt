@@ -51,7 +51,7 @@ internal class InventoryServiceTest {
                 ProductArticleDetail(articleId = 1, quantityRequired = 1, requiredByProduct = productName, productPrice = 120.5),
                 ProductArticleDetail(articleId = 2, quantityRequired = 2, requiredByProduct = productName, productPrice = 120.5))
 
-        val actual = inventoryService.getMaxProductAvailability(productName, articleDetails)
+        val actual = inventoryService.maxPerPurchase(productName, articleDetails)
         val expected = 10
 
         Assert.assertEquals(expected, actual)
@@ -64,7 +64,7 @@ internal class InventoryServiceTest {
                 ProductArticleDetail(articleId = 1, quantityRequired = 1, requiredByProduct = productName, productPrice = 120.5),
                 ProductArticleDetail(articleId = 2, quantityRequired = 2, requiredByProduct = productName, productPrice = 120.5))
 
-        val actual = inventoryService.getMaxProductAvailability(productName, articleDetails)
+        val actual = inventoryService.maxPerPurchase(productName, articleDetails)
         val expected = 0
 
         Assert.assertEquals(expected, actual)

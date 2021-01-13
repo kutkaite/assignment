@@ -19,7 +19,6 @@ class InventoryController(
         @Autowired private val inventoryService: InventoryService,
         @Autowired private val purchaseService: PurchaseService
 ) {
-
     @RequestMapping(method = [RequestMethod.GET], value = ["/available-products"])
     fun getAllAvailableProducts(): ProductInventoryResponseDto {
         return inventoryService.getAllAvailableProducts()

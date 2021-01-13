@@ -26,7 +26,7 @@ class InventoryService(
 
         productsGrouped.forEach { product ->
             try {
-                val productAvailability = getMaxProductAvailability(product.key, product.value)
+                val productAvailability = maxPerPurchase(product.key, product.value)
                 val productInventory = ProductInventory(
                         name = product.key,
                         maxQuantityAvailable = productAvailability,
@@ -40,10 +40,11 @@ class InventoryService(
         LOG.info("Product inventory was updated with the latest quantity amounts")
     }
 
-    fun getMaxProductAvailability(productName: String, productArticleDetail: List<ProductArticleDetail>): Int {
+    fun maxPerPurchase(productName: String, productArticleDetail: List<ProductArticleDetail>): Int {
         val articleIds: MutableList<Int> = mutableListOf()
         productArticleDetail.forEach { articleIds.add(it.articleId) }
 
+        // get an article with most stock as a starting point for later calculations
         var maxProductAvailability = articleInventoryFacade.getArticleWithMostStock(articleIds = articleIds)
 
         productArticleDetail.forEach { articleDetails ->
